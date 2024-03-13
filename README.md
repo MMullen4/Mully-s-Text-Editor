@@ -4,6 +4,7 @@ A simple text editor that can be downloaded to your local machine.
 ## Visuals
 ![Alt text](<JATE SS.png>)
 
+https://mully-s-text-editor.onrender.com
 
 
 ## Installation
