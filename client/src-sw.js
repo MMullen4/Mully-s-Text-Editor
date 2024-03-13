@@ -27,17 +27,17 @@ warmStrategyCache({
 registerRoute(({ request }) => request.mode === 'navigate', pageCache);
 
 // TODO: Implement asset caching
-// if user working offline cache assets
-registerRoute(
+
+registerRoute( // if user working offline, cache assets
   ({ request }) => ['style', 'script', 'worker', 'assets', 'icons'].includes(request.destination),
-  new CacheFirst({
-    cacheName: 'asset-cache',
-    plugins: [
+  new CacheFirst({ // cache assets using the CacheFirst strategy
+    cacheName: 'asset-cache', 
+    plugins: [ // add CacheableResponsePlugin and ExpirationPlugin to the CacheFirst strategy
       new CacheableResponsePlugin({
-        statuses: [0, 200],
+        statuses: [0, 200], // cacheable response status codes
       }),
       new ExpirationPlugin({
-        maxAgeSeconds: 30 * 24 * 60 * 60,
+        maxAgeSeconds: 30 * 24 * 60 * 60, // expiration time for the cache
       }),
     ],
   })
